@@ -1,14 +1,26 @@
-% extends 'base.html'%}
+{% extends 'base.html'%}
 
 {% block title%}{{ movie.title}} - Details{% endblock %}
 
 {% block body%}
-<h1>{{movie.title}}</h1>
+<div style="text-align: center;">
+    <h1>{{movie.title}}</h1>
+    <img style="width: 350px; height: 350px;" src="{{ movie.poster_path }}">
+    <div style="text-align: -webkit-center;">
+        <p style="width: 350px; height: 350px;">
+            {{ movie.overview}}
+        </p>
+    </div>
+    <form action="movies/{{ movie.movie_id }/ratings}">
+        <select name = "ratings">
+            <option value="1"> 1 </option>
+            <option value="2"> 2 </option>
+            <option value="3"> 3 </option>
+            <option value="4"> 4 </option>
+            <option value="5"> 5 </option>
+        </select>
+        <input type="submit">
+    </form>
 
-<p>
-    {{ movie.overview}}
-</p>
-
-<img src="{{ movie.poster_path }}">
-
+</div>
 {% endblock%}
